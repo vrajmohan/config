@@ -1,63 +1,58 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Install vundle
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline.git'
-Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim.git'
+Plugin 'majutsushi/tagbar.git'
+Plugin 'nvie/vim-flake8.git'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+" Put your non-Plugin stuff after this line
 
-set hlsearch incsearch
+"Appearance
+syntax on
+colorscheme molokai
+set background=dark
+set number
+set title
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent copyindent
+set list lcs=trail:·,tab:→\ 
+set colorcolumn=81
+highlight colorcolumn ctermbg=red
+set visualbell noerrorbells
+
+"Search
 set ignorecase smartcase
-set ts=4 sw=4 expandtab ai ci
 set shiftround
 set showmatch
-set number
-set guifont=Ubuntu\ Mono\ 14
-syntax on
-set guioptions-=T
+set hlsearch incsearch
+nmap <silent> <C-l> :nohlsearch<CR>
+
 set hidden
 set backspace=indent,eol,start
 set wildignore=*.swp,*.bak,*.pyc,*.class
-set title
-set visualbell noerrorbells
 set nobackup
 set noswapfile
+
 set pastetoggle=<F2>
-
-set laststatus=2 "For vim-airline
-
-au BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
-
-let g:ScreenImpl = 'Tmux'
-if has("autocmd") && exists("+omnifunc")
-    autocmd Filetype *
-        \ if &omnifunc == "" |
-        \   setlocal omnifunc=syntaxcomplete#Complete |
-        \ endif
-endif
-
-
-map <F3> :NERDTreeToggle<CR>
+map <F3> :Vex<CR>
 map <F4> :TagbarToggle<CR>
+map <F5> :!ctags -R<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-nmap <silent> ,/ :nohlsearch<CR>
 cmap w!! w !sudo tee % >/dev/null
-
-
+cmap W w
