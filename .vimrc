@@ -23,7 +23,7 @@ filetype plugin indent on    " required
 
 "Appearance
 syntax on
-colorscheme molokai
+colorscheme slate
 set background=dark
 set number
 set title
