@@ -1,0 +1,8 @@
+[user]
+    name = Vraj Mohan
+    email = r.vrajmohan@gmail.com
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
