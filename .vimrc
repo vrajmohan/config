@@ -1,25 +1,8 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              " Not required if >= vim 8
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-sensible'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim.git'
-Plugin 'majutsushi/tagbar.git'
-Plugin 'nvie/vim-flake8.git'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-" Put your non-Plugin stuff after this line
+autocmd FileType * setlocal colorcolumn=81
+autocmd FileType xhtml setlocal noexpandtab colorcolumn=
 
 "Appearance
 syntax on
@@ -27,10 +10,9 @@ colorscheme slate
 set background=dark
 set number
 set title
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent copyindent
+set tabstop=4 shiftwidth=4 softtabstop=4 autoindent copyindent
 set list lcs=trail:·,tab:→\ 
-set colorcolumn=81
-highlight colorcolumn ctermbg=red
+highlight colorcolumn ctermbg=magenta
 set visualbell noerrorbells
 
 "Search
